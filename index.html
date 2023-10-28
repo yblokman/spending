@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Expenses chart component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section class="section__order">
+  <div class="container__order">
+    <div class="text__container__order">
+      <p class="subtitle__order">My balance</p>
+      <p class="title__order">$921.48</p>
+    </div>
+  </div>
+  <section class="section__info">
+  <div class="container__info">
+  
+  <div class="content___info">
+    <p class="title__info">Spending - Last 7 days</p>
+    <div id="chart"></div>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+      google.charts.load('current', {packages: ['corechart' ]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart(){
+        const container = document.querySelector('#chart')
+        const data = google.visualization.arrayToDataTable([
+          ['Week days' , 'Cash'],
+          ['mon' , 100 ],
+          ['tue' , 20 ],
+          ['wed' , 60 ],
+          ['thu' , 50 ],
+          ['fri' , 80 ],
+          ['sat' , 200 ],
+          ['sun' , 18 ]
+        ])
+        const options = {
+          height: 200,
+          width: 400
+        }
+        const chart = new google.visualization.ColumnChart(container)
+        chart.draw(data, options)
+      }
+    </script>
+  </div>
+
+  </div>
+  </section>
+  </section>
+</body>
+</html>
