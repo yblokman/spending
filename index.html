@@ -31,31 +31,47 @@
   
   <div class="content___info">
     <p class="title__info">Spending - Last 7 days</p>
+    <div class="chart">
     <div id="chart"></div>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
+
+
+      var widthScreen = window.innerWidth;
+      var largura = 400;
+      
+      function tamanhoTela() {
+        if(widthScreen < 426){
+            largura = 350
+        }
+      };
+
+      tamanhoTela()
+
       google.charts.load('current', {packages: ['corechart' ]});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart(){
         const container = document.querySelector('#chart')
         const data = google.visualization.arrayToDataTable([
-          ['Week days' , 'Cash'],
-          ['mon' , 100 ],
-          ['tue' , 20 ],
-          ['wed' , 60 ],
-          ['thu' , 50 ],
-          ['fri' , 80 ],
-          ['sat' , 200 ],
+          ['Week days', 'Cash'],
+          ['mon' , 100,],
+          ['tue' , 20, ],
+          ['wed' , 60, ],
+          ['thu' , 50, ],
+          ['fri' , 80, ],
+          ['sat' , 60,],
           ['sun' , 18 ]
+
         ])
         const options = {
           height: 200,
-          width: 400
-        }
+          width: largura,
+      }
         const chart = new google.visualization.ColumnChart(container)
         chart.draw(data, options)
       }
     </script>
+    </div>
   </div>
 
   </div>
